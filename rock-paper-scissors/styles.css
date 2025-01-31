@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Courier New", Monospace, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: linear-gradient(180deg, #34a8eb, #0991e0);
+    border-radius: 5px;
+    padding: 16px;
+}
+
+h1, #controls, #results, .score-block, .score-count, .credits {
+    background: linear-gradient(180deg, #09e07f, #09e05f);
+    padding: 8px;
+    border-radius: 5px;
+    margin: 0;
+    border: 2px solid white;
+}
+
+.credits {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.score-block {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-style: italic;
+}
+
+h3 {
+    padding: 0;
+    margin: 0;
+}
+
+#controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 12px;
+}
+
+button {
+    flex: 1;
+    padding: 8px 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    background: linear-gradient(180deg, #34a8eb, #0991e0);
+    border: 2px solid white;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50px;
+    gap: 8px;
+    padding: 16px;
+}
+
+#results p {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
