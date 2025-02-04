@@ -26,4 +26,18 @@ puts list.contains?('snAke')
 puts list.find('cat')
 puts list.at(2)
 puts list.find('tiger')
+puts '--------------------------'
+puts list
+list.insert_at('tiger', 2)
+puts list
+list.insert_at('tire', 0)
+puts list
+list.insert_at('sheep', 10)
+puts list
+list.remove_at(3)
+puts list
+list.remove_at(5)
+puts list
+list.remove_at(0)
+puts list
 
