@@ -1,15 +1,4 @@
-class Node
-  attr_accessor :value, :next_node
-
-  def initialize(value, next_node= nil)
-    @value = value
-    @next_node = next_node
-  end
-
-  def to_s
-    "Node(#{value})"
-  end
-end
+require_relative 'node'
 
 class LinkedList
   attr_reader :size, :head, :tail
@@ -40,6 +29,44 @@ class LinkedList
     @size += 1
   end
 
+  def insert_at(value, index)
+    append(value) if index >= @size
+    prepend(value) if index == 0
+    raise 'Negative indexes not allowed' if index < 0
+
+    if index.between?(1, @size)
+      node = Node.new(value)
+      prev = @head
+      (index - 1).times do |_|
+        prev = prev.next_node
+      end
+      node.next_node = prev.next_node
+      prev.next_node = node
+    end
+  end
+
+  def remove_at(index)
+    pop if index >= (@size - 1)
+
+    if index.between?(1, @size-2)
+      prev = @head
+      node = prev.next_node
+
+      (index - 1).times do |_|
+        prev = prev.next_node
+        node = node.next_node
+      end
+
+      prev.next_node = node.next_node
+      node.next_node = nil
+    elsif index == 0
+      prev = @head
+      @head = @head.next_node
+      prev.next_node = nil
+    end
+    @size -= 1
+  end
+
   def at(index)
     return nil unless index.between?(0, @size)
     res = @head
@@ -60,6 +87,8 @@ class LinkedList
     new_tail.next_node = nil
     old_tail = @tail
     @tail = new_tail
+
+    @size -= 1
 
     old_tail
   end
