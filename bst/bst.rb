@@ -26,8 +26,8 @@ class Tree
     inject(Node.new(value))
   end
 
-  def delete(node)
-    nil
+  def delete(value)
+    remove(@root, value)
   end
 
   def inorder
@@ -123,6 +123,33 @@ class Tree
     collect_nodes(node.left, arr)
     collect_nodes(node.right, arr)
     arr
+  end
+
+  def remove(node, value)
+    return nil if node.nil?
+
+    if value < node.val
+      node.left = remove(node.left, value) 
+    elsif value > node.val
+      node.right = remove(node.right, value)
+    else
+      # Case 2: One child
+      return node.right if node.left.nil? 
+      return node.left if node.right.nil? 
+
+      # Case 3: Two children
+      min = find_min(node.right).val
+      node.val = min
+      node.right = remove(node.right, min)
+    end
+    node
+  end
+
+  def find_min(node)
+    until node.left.nil?
+      node = node.left
+    end
+    node
   end
 
   def inject(node, curr= @root)
